@@ -190,6 +190,7 @@ sudo apt-get install libexpat1-dev:i386
 oslab 目录下的 hdc-0.11.img 是 0.11 内核启动后的根文件系统镜像文件，相当于在 bochs 虚拟机里装载的硬盘。在 Ubuntu 上访问其内容的方法如下：
 
 在挂载之前，`~/oslab/hdc`目录下的内容是：
+
 ![alt](./pictures/34.png)
 
 ```bash
@@ -201,6 +202,7 @@ sudo ./mount-hdc
 挂载之后，`hdc`目录下就是和 0.11 内核一样的文件系统了，可以读写任何文件(有些文件可能需要用`sudo`才能访问)。
 
 挂载之后，`~hdc/oslab/hdc`目录下的内容是：
+
 ![alt](./pictures/36.png)
 
 **读写完毕后，需要卸载这个文件系统。**
@@ -215,7 +217,9 @@ sudo umount hdc
 ![alt](./pictures/37.png)
 
 第1行 指明脚本使用的 shell
+
 第2行 将调用本脚本的目录设置为 oslab 的目录
+
 第3行 根据 mount 的 manual 手册：
 
 - -t minix 表示要挂载的文件系统类型为minix
@@ -227,4 +231,5 @@ sudo umount hdc
 故此行将`./OSLAB_PATH/hdc-0.11.img`映射到`mount`搜寻到的设备中，文件系统为`minix`，数据起始偏移为`1024byte`，再挂载到`./OSLAB_PATH/hdc`目录下。
 
 **注意1：不要在 0.11 内核运行的时候`mount`镜像文件，否则可能会损坏文件系统。同理，也不要在已经`mount`的时候运行 0.11 内核。**
+
 **注意2：在关闭 Bochs 之前，需要先在 0.11 的命令行运行`sync`，确保所有缓存数据都存盘后，再关闭 Bochs。**
